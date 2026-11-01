@@ -1,0 +1,34 @@
+clc;
+   clear;
+   close all;
+
+   M=1;
+   B=0.5;
+   K=20;
+
+   num=[1];
+   den=[M B K];
+   sys=tf(num,den);
+
+   figure;
+   step(sys);
+   grid on;
+   title('step response of mass spring damping system');
+
+   
+   figure;
+   impulse(sys);
+   grid on;
+   title('impulse response');
+
+   figure;
+   t=0:0.01:10;
+   u=t;
+   lsim(sys,u,t);
+   grid on;
+   title('damp response');
+
+   figure;
+   pzmap(sys);
+   grid on;
+   title('pole-zero response');
